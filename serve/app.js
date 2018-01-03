@@ -44,4 +44,8 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
 
+app.listen(3000 ,'172.18.11.10', ()=>{
+    console.log(`server start listening...`);
+});
+
 module.exports = app;

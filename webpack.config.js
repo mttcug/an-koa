@@ -1,11 +1,10 @@
 var path = require("path");
 var webpack = require("webpack");
-var HtmlWebpackPlugin=require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        app:'./app/main.ts',
-        serve: './serve/bin/www'
+        app: './app/main.ts'
     },
 
     output: {
@@ -27,6 +26,16 @@ module.exports = {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
                 exclude: '/node_module/'
+            },
+            {
+                test: /\.js?$/,
+                loaders: ['babel'],
+                exclude: /node_modules/
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
             }
         ]
     },

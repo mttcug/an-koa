@@ -1,4 +1,5 @@
 node_modules
 npm_*
 .build
+dist
 static/scripts-build
