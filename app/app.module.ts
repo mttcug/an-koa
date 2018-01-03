@@ -8,6 +8,7 @@ import { AppComponent } from "./component/app.component";
 import { loginComponent } from "./component/login.component";
 
 import { appRoute } from "./app-routes";
+
 @NgModule({
     imports:[
         BrowserModule,

@@ -1,7 +1,7 @@
-import { RouterModule , Route } from "@angular/router";
+import { RouterModule , Routes } from "@angular/router";
 import { loginComponent } from "./component/login.component";
 
-const route : Route = [
+const route : Routes = [
     {path:'', redirectTo : 'login' ,pathMatch: 'full' },
     {path : '/login' , component : loginComponent }
 ]

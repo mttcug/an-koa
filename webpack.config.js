@@ -1,5 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
+var HtmlWebpackPlugin=require('html-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -8,9 +9,10 @@ module.exports = {
     },
 
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[chunkhash:8].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
+
     module: {
         rules: [
             {
@@ -27,5 +29,10 @@ module.exports = {
                 exclude: '/node_module/'
             }
         ]
-    }
+    },
+    plugins: [new HtmlWebpackPlugin({
+        title: 'My App',
+        filename: 'index.html',
+        template: 'serve/views/index.html'
+    })]
 };
