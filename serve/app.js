@@ -1,4 +1,4 @@
-var app = require('koa')()
+var koa = require('koa')
   , logger = require('koa-logger')
   , json = require('koa-json')
   , views = require('koa-views')
@@ -7,14 +7,9 @@ var app = require('koa')()
 var router = require('./routes/index');
 var nunjucks = require('nunjucks');
 
+var app = new koa();
 // error handler
 onerror(app);
-
-// global middlewares
-app.use(views('views', {
-  root: __dirname + '/views',
-  default: 'html'
-}));
 
 nunjucks.configure( 'views', { // 设置模板文件的目录，为views
     autoescape: true,
@@ -22,6 +17,12 @@ nunjucks.configure( 'views', { // 设置模板文件的目录，为views
     watch: true,
     noCache: true
 });
+// global middlewares
+app.use(views('views', {
+  root: __dirname + '/views',
+    map: { html: 'nunjucks' }
+}));
+
 
 app.use(require('koa-bodyparser')());
 app.use(json());

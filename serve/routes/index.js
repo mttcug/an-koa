@@ -7,4 +7,4 @@ const route = app => {
   app.use(render.routes());
 }
 
-module.exports = router;
+module.exports = route;
