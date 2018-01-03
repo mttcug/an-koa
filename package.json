@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -56,8 +58,11 @@
   "devDependencies": {
     "@types/node": "^7.0.12",
     "awesome-typescript-loader": "^3.1.2",
+    "css-loader": "^0.28.7",
+    "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.1",
-    "ts-loader": "^2.0.3",
+    "style-loader": "^0.19.1",
+    "ts-loader": "^2.3.7",
     "typescript": "^2.2.2",
     "webpack": "^2.3.3"
   }
