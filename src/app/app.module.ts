@@ -14,7 +14,7 @@ import { appRoute } from "./app-routes";
         BrowserModule,
         FormsModule,
         HttpModule,
-        RouterModule.forRoot(appRoute)
+        RouterModule.forRoot(appRoute,{useHash: false})
     ],
     declarations:[
         AppComponent,

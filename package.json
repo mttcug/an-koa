@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./serve/app.js",
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --config config/webpack.dev.js --progress",
+    "test": "karma start",
+    "build": "webpack --config config/webpack.dev.js --progress --profile --bail",
+    "webpack": "webpack",
+    "rimraf": "rimraf"
   },
   "repository": {
     "type": "git",
