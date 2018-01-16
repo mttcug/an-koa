@@ -1,6 +1,7 @@
 var router = require('koa-router')();
 
 router.get('/', function *(next) {
+    console.log("render.js");
     yield this.render('index', {
         title: 'Hello World Koa!'
     });

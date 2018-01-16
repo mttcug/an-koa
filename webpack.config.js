@@ -4,12 +4,16 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        app: './app/main.ts'
+        index: [
+            './app/main.ts'
+        ],
     },
 
     output: {
         filename: '[name].[chunkhash:8].bundle.js',
-        path: path.resolve(__dirname, 'static/')
+        path: path.resolve(__dirname, '../static/'),
+        publicPath: 'http://localhost:3000/build/',
+        // webpack-dev-server伺服的文件是相对publicPath这个路径的
     },
 
     module: {
@@ -40,17 +44,17 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
+     /*   new HtmlWebpackPlugin({
             title: 'My App',
             filename: 'index.html',
-            template: 'serve/views/index.html',
+            template: './src/serve/views/index.html',
             inject: true,    //允许插件修改哪些内容，包括head与body
             hash: true,    //为静态资源生成hash值
             minify: {    //压缩HTML文件
                 removeComments: true,    //移除HTML中的注释
                 collapseWhitespace: true    //删除空白符与换行符
             }
-        }),
+        }),*/
 
         new webpack.optimize.UglifyJsPlugin({    //压缩代码
             compress: {
@@ -58,7 +62,14 @@ module.exports = {
             },
             except: ['$super', '$', 'exports', 'require']    //排除关键字
         }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+            }
+        })
     ]
 };
 
-module.exports = require('./config/webpack.dev.js');

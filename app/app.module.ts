@@ -20,10 +20,8 @@ import { appRoute } from "./app-routes";
         AppComponent,
         loginComponent
     ],
-    providers:[
-
-    ],
+    providers:[],
     bootstrap:[AppComponent]
 })
 
-export class AppModule {};
+export class AppModule { }
