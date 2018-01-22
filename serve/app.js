@@ -1,90 +1,69 @@
-var Koa = require('koa')
-  , logger = require('koa-logger')
-  , json = require('koa-json')
-  , views = require('koa-views')
-  , onerror = require('koa-onerror')
-  , bodyParser = require('koa-bodyparser');
-
-const nunjucks = require('nunjucks');
-const webpack = require('webpack');
-const convert = require('koa-convert');
-const koaWebpackMiddleware = require('koa-webpack-middleware');
-const webpackDevMiddleware = koaWebpackMiddleware.devMiddleware;
-const webpackHotMiddleware = koaWebpackMiddleware.hotMiddleware;
-const config = require('../../webpack.config');
-
-var router=require('./routes/index');
+var koa = require('Koa');
+var router = require('koa-router')();
+const  serve = require("koa-static");
+var bodyParser = require('koa-bodyparser');
+var fs = require('fs');
 
 
-
-const app = new Koa();
-const compiler = webpack(config);
-const PORT = process.env.PORT || 3000;
-const wdm = webpackDevMiddleware(compiler, {
-    watchOptions: {
-        aggregateTimeout: 300,
-        poll: true
-    },
-    reload: true,
-    publicPath: config.output.publicPath,
-    stats: {
-        colors: true
-    }
-})
-app.use(convert(wdm));
-app.use(convert(webpackHotMiddleware(compiler)));
+var app = new koa();
+app.use(bodyParser());
+app.use(router.routes());
 
 
-// view engine setup
-nunjucks.configure('views', { autoescape: true });
-//views with nunjucks
-app.use(views(__dirname + '/views', {
-    map: { html: 'nunjucks' }
-}));
-
-// middle wares
-app.use(bodyParser);
-app.use(json());
-app.use(logger());
-app.use(require('koa-static')(__dirname + '/public'));
-
-// logger
-
-app.use(async function (ctx, next) {
-    const start = new Date();
-    await next();
-    const ms = new Date() - start;
-    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+router.get('/', async (ctx, next) => {
+  ctx.response.body =
+  '<h1>Index</h1> <form action="/login" method="post"> '
+  +
+  '<p>Name: <input name="name"></p>'
+  +
+  ' <p>Password: <input name="password" type="password"></p> '
+  +
+  '<p><input type="submit" value="Submit"></p>'
+  +
+  ' </form>';
 });
 
 
-// routes
+router.post('/login', async (ctx, next) => {
+  let
+    name = ctx.request.body.name || '',
+  password = ctx.request.body.password || '';
 
-//app.use(index.routes(), index.allowedMethods());
-router(app);
+console.log(ctx.request);
+if (name === 'koa' && password === '12345') {
+  ctx.body = "Success"
+} else {
+  ctx.body = "Login error"
 
-// error handler
+}
+});
+/*const LOAD_HTML = function() {
+  return new Promise(function (resolve, reject) {
+    fs.readFile('./dist/index.html', {'encoding': 'utf8'}, function (err, data) {
+      if(err) return reject(err);
+      resolve(data);
+    });
+  });
+};
 
-onerror(app);
+router.get('/', function *(next) {
+  if (this.request.url.startsWith("/api")) {
+    yield next;
+  } else {
+    this.body = yield LOAD_HTML();
+  }
+});
 
+app.use(router.routes());*/
 
-const port = 3000;
-app.listen(port);
-console.info('启动服务器在 http://localhost:' + port);
+/*app.use(async ctx => {
+  ctx.body='mtt start666';
+});*/
 
-/*const server = app.listen(PORT, 'localhost', (err) => {
-    if (err) {
-        console.error(err)
-        return
-    }
-    console.log(`HMR Listening at http://localhost:${PORT}`)
-})
-process.on('SIGTERM', () => {
-    console.log('Stopping dev server')
-    wdm.close()
-    server.close(() => {
-        process.exit(0)
-    })
-})*/
+//app.use(indexRouter.routes(),indexRouter.allowedMethods());
+
+app.listen(3002,function(){
+  console.log('the server is listening on port 3000');
+});
 
 
