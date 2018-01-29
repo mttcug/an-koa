@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 var helpers = require('./helper');
 
 module.exports = {
@@ -42,6 +43,7 @@ module.exports = {
   },
 
   plugins: [
+    new CleanWebpackPlugin(helpers.root('dist')),
     // Workaround for angular/angular#11580
     new webpack.ContextReplacementPlugin( /(.+)?angular(\\|\/)core(.+)?/, helpers.root('./src'), {} ),
 

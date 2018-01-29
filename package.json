@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node serve/app.js",
+    "prestart": "webpack",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -42,6 +43,7 @@
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.4.1",
     "babel-loader": "^7.1.2",
+    "clean-webpack-plugin": "^0.1.18",
     "codelyzer": "^4.0.1",
     "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^2.0.0",
