@@ -1,9 +1,17 @@
-<accordion>
-  <accordion-group heading="Header">
-    This content is straight in the template.
+<accordion [closeOthers]="oneAtATime">
+  <accordion-group heading="前端">
+    <p><a href="" routerLink="computer"><i class="iconfont icon-category"></i>javascript</a></p>
+    <p><a href="" routerLink="english"><i class="iconfont icon-category"></i>html</a></p>
+    <p><a href=""><i class="iconfont icon-category"></i>css</a></p>
+    <p><a href=""><i class="iconfont icon-category"></i>typescript</a></p>
+    <p><a href=""><i class="iconfont icon-category"></i>nodejs</a></p>
+    <p><a href=""><i class="iconfont icon-category"></i>rxjs</a></p>
+    <p><a href=""><i class="iconfont icon-category"></i>webpack</a></p>
   </accordion-group>
-  <accordion-group heading="Content 1">
-    <p>Content 1</p>
+  <accordion-group heading="英语">
+    <p><a href=""><i class="iconfont icon-category"></i>单词</a></p>
+    <p><a href=""><i class="iconfont icon-category"></i>口语</a></p>
+    <p><a href=""><i class="iconfont icon-category"></i>写作</a></p>
   </accordion-group>
   <accordion-group heading="Content 2">
     <p>Content 2</p>

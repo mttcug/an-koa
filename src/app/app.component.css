@@ -9,5 +9,8 @@ header{
   font-weight: 800;
 }
 app-sidebar{
-
+  padding: 0px;
+}
+.category-content{
+  padding: 0px;
 }

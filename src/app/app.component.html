@@ -2,8 +2,11 @@
 <header>
  study pots
 </header>
-<div id="content" class="row">
+<div id="content" class="row" [ngStyle]="{height:contentHeight+'px'}">
   <app-sidebar class="col-lg-2"></app-sidebar>
-  <router-outlet class="col-lg-10"></router-outlet>
+  <div class="category-content col-lg-10">
+    <router-outlet></router-outlet>
+    <footer>try everything you want konw @mtt </footer>
+  </div>
 </div>
-<footer>try everything you want konw @mtt </footer>
+

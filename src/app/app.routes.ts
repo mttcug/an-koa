@@ -1,31 +1,33 @@
 import { RouterModule, Router, Routes} from '@angular/router';
 
-import { LoginComponent} from './component/login/login.component';
-import { UserInfoComponent} from './component/user-info/user-info.component';
-import { HomeComponent } from './component/home/home.component';
+
+import { SidebarComponent } from './component/sidebar/sidebar.component';
+import { ComputerSortComponent } from './component/computer-sort/computer-sort.component';
+import { EnglistSortComponent } from './component/englist-sort/englist-sort.component';
+import { HobbySortComponent } from './component/hobby-sort/hobby-sort.component';
 
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'computer',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: HomeComponent
+    path: 'computer',
+    component: ComputerSortComponent
   },
   {
-    path: 'releaseInfo',                                //发布完成页面
-    component: LoginComponent
+    path: 'english',                                //发布完成页面
+    component: EnglistSortComponent
   },
   {
-    path: 'login',                                //发布完成页面
-    component: UserInfoComponent
+    path: 'hobby',                                //发布完成页面
+    component: HobbySortComponent
   },
   {
     path: '**',                                //发布完成页面
-    component: HomeComponent
+    component: ComputerSortComponent
   }
 ]
 

@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { AccordionModule } from 'ngx-bootstrap';
 
 import {appRoutes} from './app.routes';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './component/login/login.component';
-import { UserInfoComponent } from './component/user-info/user-info.component';
-import { HomeComponent } from './component/home/home.component';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
+import { ComputerSortComponent } from './component/computer-sort/computer-sort.component';
+import { EnglistSortComponent } from './component/englist-sort/englist-sort.component';
+import { HobbySortComponent } from './component/hobby-sort/hobby-sort.component';
 
 
 
@@ -18,14 +18,15 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent,
-    UserInfoComponent,
-    SidebarComponent
+    SidebarComponent,
+    ComputerSortComponent,
+    EnglistSortComponent,
+    HobbySortComponent
   ],
   entryComponents:[],
   imports: [
     BrowserModule,
+    AccordionModule.forRoot(),
     appRoutes
   ],
   providers: [],

@@ -1,0 +1,17 @@
+accordion p{
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 0px;
+  padding: 10px 0px;
+}
+
+.iconfont{
+  margin:0px 10px;
+}
+.panel .card{
+  border-top: none;
+  border-radius: 0px;
+}
+.panel-group  .card-body{
+  padding: 0px;
+}
+

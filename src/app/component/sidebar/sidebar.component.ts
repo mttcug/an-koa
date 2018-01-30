@@ -8,9 +8,16 @@ import {AccordionConfig} from 'ngx-bootstrap';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(AccordionConfig) { }
+  constructor() { }
 
   ngOnInit() {
+    this.getContentHeight();
   }
+  oneAtATime:boolean = true;
+  contentHeight:number;
 
+  getContentHeight():void{
+    let windowHeight = window.innerHeight;
+    this.contentHeight = windowHeight-200;
+  }
 }
