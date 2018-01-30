@@ -8,12 +8,29 @@ var views=require('koa-views');
 var render=require('koa-render');
 var nunjucks = require('nunjucks');
 var static = require('koa-static');
+var open = require('open');
 nunjucks.configure('views', { autoescape: true });
-
 
 
 var app = new koa();
 var router = new Router();
+
+
+//webpack热加载
+var webpack = require('webpack');
+var webpackDevMiddleware = require('koa-webpack-dev-middleware');
+var webpackHotMiddleware = require('koa-webpack-hot-middleware');
+var config = require('../webpack.config');
+var compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}));
+app.use(webpackHotMiddleware(compiler));
+
+
+
+
 
 app
   .use(bodyParser())
@@ -67,6 +84,7 @@ router.get('/', async function (ctx, next) {
 
 app.listen(3002,function(){
   console.log('the server is listening on port 3000');
+  open('http://localhost:3002');
 });
 
 
