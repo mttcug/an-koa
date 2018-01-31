@@ -2,7 +2,7 @@
 <header>
  study pots
 </header>
-<div id="content" class="row" [ngStyle]="{height:contentHeight+'px'}">
+<div id="content" class="row" [ngStyle]="{'height.px':getContentHeight()}">
   <app-sidebar class="col-lg-2"></app-sidebar>
   <div class="category-content col-lg-10">
     <router-outlet></router-outlet>

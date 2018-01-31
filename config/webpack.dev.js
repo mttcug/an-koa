@@ -9,8 +9,7 @@ module.exports = webpackMerge(commonConfig, {
 
   output: {
     path: helpers.root('dist'),
-
-    filename: '[name].[chunkhash:8].js',
+    filename: '[name].bundle.[chunkhash:8].js',
     chunkFilename: '[id].chunk.js'
   },
 

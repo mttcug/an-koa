@@ -10,14 +10,14 @@ export class SidebarComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.getContentHeight();
-  }
-  oneAtATime:boolean = true;
-  contentHeight:number;
+  ngOnInit() { }
 
-  getContentHeight():void{
-    let windowHeight = window.innerHeight;
-    this.contentHeight = windowHeight-200;
+  computerShow = false;
+  englistShow = true;
+
+  toggleTab(tab):void{
+    tab=!tab;
   }
+
+
 }

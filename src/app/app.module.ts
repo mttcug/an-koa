@@ -9,6 +9,8 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { ComputerSortComponent } from './component/computer-sort/computer-sort.component';
 import { EnglistSortComponent } from './component/englist-sort/englist-sort.component';
 import { HobbySortComponent } from './component/hobby-sort/hobby-sort.component';
+import { MutePageComponent } from './component/mute-page/mute-page.component';
+import { NgShowDirective } from './directive/ng-show.directive';
 
 
 
@@ -21,7 +23,9 @@ import { HobbySortComponent } from './component/hobby-sort/hobby-sort.component'
     SidebarComponent,
     ComputerSortComponent,
     EnglistSortComponent,
-    HobbySortComponent
+    HobbySortComponent,
+    MutePageComponent,
+    NgShowDirective
   ],
   entryComponents:[],
   imports: [
