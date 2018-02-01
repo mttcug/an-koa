@@ -17,7 +17,7 @@ var router = new Router();
 
 
 //webpack热加载
-var webpack = require('webpack');
+/*var webpack = require('webpack');
 var webpackDevMiddleware = require('koa-webpack-dev-middleware');
 var webpackHotMiddleware = require('koa-webpack-hot-middleware');
 var config = require('../webpack.config');
@@ -26,9 +26,15 @@ app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath
 }));
-app.use(webpackHotMiddleware(compiler));
+app.use(webpackHotMiddleware(compiler));*/
 
-
+const webpack = require('webpack');
+const webpackConfig = require('../webpack.config');
+const compiler = webpack(webpackConfig);
+const devMiddleware = require('koa-webpack-dev-middleware')(compiler);
+const hotMiddleware = require('koa-webpack-hot-middleware')(compiler);
+app.use(devMiddleware);
+app.use(hotMiddleware);
 
 
 
@@ -42,7 +48,7 @@ app
 
 router.get('**', async function (ctx, next) {
   await ctx.render('index.html',{
-    data:123
+    data:1232344356
   });
 });
 

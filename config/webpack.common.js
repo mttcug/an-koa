@@ -41,7 +41,7 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: helpers.root('src', 'app'),
-        loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
+        use: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
       },
       {
         test: /\.css$/,
@@ -52,8 +52,10 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+
     new CleanWebpackPlugin([helpers.root('dist')],{
-      root: '/',
+      root: process.cwd(),
       verbose: true,
       dry: false
     }),
