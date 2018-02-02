@@ -12,11 +12,13 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() { }
 
-  computerShow = false;
-  englistShow = true;
+  tabObj:object = {
+    'computerShow':true,
+    'englistShow':false
+  }
 
-  toggleTab(tab):void{
-    tab=!tab;
+  toggleTab(tab:string):void{
+    this.tabObj[tab]=!this.tabObj[tab];
   }
 
 

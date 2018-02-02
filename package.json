@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node serve/app.js",
+    "start": "nodemon serve/app.js",
     "prestart": "webpack",
     "build": "ng build --prod",
     "test": "ng test",

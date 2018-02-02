@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  Http, Response, RequestOptions, Headers } from  '@angular/http';
 
 @Component({
   selector: 'app-computer-sort',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComputerSortComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:Http) {
+    this.request();
+  }
 
   ngOnInit() {
   }
+
+  request(){
+    this.http.get('./quote').subscribe(res=>{
+      let result=res;
+      console.log("requestRES:",result);
+    })
+  }
+
 
 }

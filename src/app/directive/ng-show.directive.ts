@@ -1,19 +1,21 @@
-import { Directive, ElementRef, Input  } from '@angular/core';
+import { Directive, ElementRef, Input, AfterViewInit, Renderer2 ,OnChanges ,SimpleChanges} from '@angular/core';
 
 @Directive({
   selector: '[appNgShow]'
 })
-export class NgShowDirective {
+export class NgShowDirective implements AfterViewInit ,OnChanges{
 
   @Input('appNgShow') ngShow:boolean ;
 
-  constructor(el:ElementRef) {
-    console.log("ngShow:",this.ngShow);
-    this.init();
-    el.nativeElement.style.display = this.ngShow ? 'block' : 'none';
+  constructor(private el: ElementRef, private renderer2:Renderer2){}
+
+  ngAfterViewInit() {
+    this.el.nativeElement.style.display = this.ngShow ? 'block' : 'none';
+   /* this.renderer2.addClass(this.el.nativeElement, 'btn');*/
   }
 
-  init(){
-    console.log("ngShow1:",this.ngShow);
+  ngOnChanges(changes: SimpleChanges){
+    this.el.nativeElement.style.display = this.ngShow ? 'block' : 'none';
   }
+
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AccordionModule } from 'ngx-bootstrap';
+import {HttpModule, JsonpModule} from '@angular/http';
 
 import {appRoutes} from './app.routes';
 
@@ -11,6 +11,7 @@ import { EnglistSortComponent } from './component/englist-sort/englist-sort.comp
 import { HobbySortComponent } from './component/hobby-sort/hobby-sort.component';
 import { MutePageComponent } from './component/mute-page/mute-page.component';
 import { NgShowDirective } from './directive/ng-show.directive';
+import { NgxBaiduMapComponent } from './component/common/ngx-baidu-map/ngx-baidu-map.component';
 
 
 
@@ -25,12 +26,14 @@ import { NgShowDirective } from './directive/ng-show.directive';
     EnglistSortComponent,
     HobbySortComponent,
     MutePageComponent,
-    NgShowDirective
+    NgShowDirective,
+    NgxBaiduMapComponent
   ],
   entryComponents:[],
   imports: [
     BrowserModule,
-    AccordionModule.forRoot(),
+    HttpModule,
+    JsonpModule,
     appRoutes
   ],
   providers: [],
