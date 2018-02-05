@@ -16,10 +16,10 @@ export class ComputerSortComponent implements OnInit {
   }
 
   request(){
-    this.http.get('./quote').subscribe(res=>{
+/*    this.http.get('./quote').subscribe(res=>{
       let result=res;
       console.log("requestRES:",result);
-    })
+    })*/
   }
 
 

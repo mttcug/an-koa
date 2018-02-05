@@ -42,7 +42,7 @@ router.get('**', async function (ctx, next) {
 });
 
 router.get('./quote', async function (ctx, next) {
-  ctx.response.body='lalal';
+  ctx.response='lalal';
 });
 
 

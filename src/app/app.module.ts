@@ -15,9 +15,6 @@ import { NgxBaiduMapComponent } from './component/common/ngx-baidu-map/ngx-baidu
 
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
